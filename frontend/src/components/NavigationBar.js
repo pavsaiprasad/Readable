@@ -19,9 +19,9 @@ class NavigationBar extends Component {
     }
 }
 
-function mapStateToProps(store) {
+function mapStateToProps(state) {
     return {
-        categories: store.categoriesReducer
+        categories: state.categoriesReducer
     }
 }
 
