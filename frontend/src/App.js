@@ -3,20 +3,11 @@ import { Route } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
 import AddButton from './components/AddButton';
 import Posts from './components/Posts';
+import CreatePost from './components/CreatePost';
 import './App.css';
 import { Button } from 'react-bootstrap';
 
 class App extends Component {
-  state = {
-    posts: {
-      sort: 'voteScore',
-      desc: true,
-      options: [
-        { text: "Vote Score", value: 'voteScore' },
-        { text: "Date", value: 'timestamp' }
-      ]
-    }
-  }
   render() {
     return (
       <div className="App">
@@ -28,6 +19,9 @@ class App extends Component {
         )} />
         <Route exact path="/" render={() => (
           <Posts />
+        )} />
+        <Route exact path="/add" render={() => (
+          <CreatePost />
         )} />
       </div>
     );
