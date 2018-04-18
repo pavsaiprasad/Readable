@@ -45,7 +45,7 @@ class CreatePost extends Component {
                     </div>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Submit" />
+                    <button />
                 </div>
             </form>
         );

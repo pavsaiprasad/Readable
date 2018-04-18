@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 class AddButton extends Component {
     render() {
         return (
-            <Link to="/add">Add</Link>
+            <Link className="btn btn-primary" to="/add">
+                <i className="fa fa-plus-circle"></i>
+            </Link>
         );
     }
 }

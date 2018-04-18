@@ -13,7 +13,7 @@ class App extends Component {
       <div className="App">
         <NavigationBar />
         <Route exact path="/" render={() => (
-          <div>
+          <div className="add-button">
             <AddButton />
           </div>
         )} />
@@ -23,6 +23,7 @@ class App extends Component {
         <Route exact path="/add" render={() => (
           <CreatePost />
         )} />
+
       </div>
     );
   }

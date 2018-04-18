@@ -6,3 +6,16 @@ export const getPosts = () => fetch(
         }
     }
 )
+
+export const createPost = (data) => {
+    return fetch(
+        "http://localhost:3001/posts",
+        {
+            headers: {
+                'Authorization': '8675309', 'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(data)
+        }
+    )
+}
