@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
 import AddButton from './components/AddButton';
 import Posts from './components/Posts';
+import PostDetails from './components/PostDetails';
 import CreatePost from './components/CreatePost';
 import './App.css';
 import { Button } from 'react-bootstrap';
@@ -23,7 +24,12 @@ class App extends Component {
         <Route exact path="/add" render={() => (
           <CreatePost />
         )} />
-
+        <Route exact path="/add" render={() => (
+          <CreatePost />
+        )} />
+        <Route exact path="/:category/:id" render={({ match }) => (
+          <PostDetails match={match} />
+        )} />
       </div>
     );
   }

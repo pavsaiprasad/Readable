@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 
 class Post extends Component {
     render() {
+        const post = this.props.post;
         return (
-            <div key={this.props.post.id} className="panel panel-default">
-                <Link to={`/${this.props.post.category}/${this.props.post.id}`}><strong>{this.props.post.title}</strong></Link>
-                <p>Written by {this.props.post.author} on {new Date(this.props.post.timestamp).toLocaleDateString()}</p>
-                <p className="post-body">{this.props.post.body}</p>
+            <div key={post.id} className="panel panel-default">
+                <Link to={`/${post.category}/${post.id}`}><strong>{post.title}</strong></Link>
+                <p>Written by {post.author} on {new Date(post.timestamp).toLocaleDateString()}</p>
+                <p className="post-body">{post.body}</p>
                 <div className="comment-count">
-                    <p>{this.props.post.commentCount} comments</p>
-                    <p>Vote score: {this.props.post.voteScore}</p>
+                    <p>{post.commentCount} comments</p>
+                    <p>Vote score: {post.voteScore}</p>
                 </div>
             </div>
         );
