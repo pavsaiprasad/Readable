@@ -7,12 +7,12 @@ class NavigationBar extends Component {
     render() {
         const { categories } = this.props;
         return (
-            <ul class="nav flex-column">
-                <li class="nav-item">
+            <ul className="nav flex-column">
+                <li className="nav-item">
                     <a href="/">Home</a>
                 </li>
                 {categories.map((category) =>
-                    <li class="nav-item" key={category.name} >
+                    <li className="nav-item" key={category.name} >
                         <Link to={`/${category.path}`}>{category.name}</Link>
                     </li>
                 )}

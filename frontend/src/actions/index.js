@@ -36,3 +36,13 @@ export const dispatchPosts = function () {
       )
   }
 }
+
+export const addPost = function (post) {
+  return function (dispatch) {
+    PostsAPI.createPost(post);
+    return {
+      type: 'ADD_POST',
+      post
+    }
+  }
+}

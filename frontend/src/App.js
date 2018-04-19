@@ -24,9 +24,6 @@ class App extends Component {
         <Route exact path="/add" render={() => (
           <CreatePost />
         )} />
-        <Route exact path="/add" render={() => (
-          <CreatePost />
-        )} />
         <Route exact path="/:category/:id" render={({ match }) => (
           <PostDetails match={match} />
         )} />
