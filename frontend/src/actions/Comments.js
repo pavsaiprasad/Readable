@@ -1,7 +1,7 @@
 import * as CommentsAPI from '../services/comments-api';
 
 export const getComments = (parentId, comments) => ({
-    type: RETRIEVE_COMMENTS,
+    type: 'GET_COMMENTS',
     parentId,
     comments
 })

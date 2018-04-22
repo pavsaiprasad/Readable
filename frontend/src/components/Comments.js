@@ -5,21 +5,17 @@ class Comments extends Component {
     render() {
         const { comments, post } = this.props
         return (
-            <div>
-                <h3 className="post-comments-title">{comments.length} COMMENTS </h3>
+            <div className="display-inline">
                 {comments.map((comment) =>
-                    <div className="post-comment" key={comment.id}>
-                        <div className="post-comment-author">
-                            {comment.author}
-                            <span className="post-comment-date">
-                                {new Date(comment.timestamp).toLocaleDateString()}
-                            </span>
+                    <div class="card panel-width" key={comment.id}>
+                        <div className="card-header">
+                            <div className="display-left">{comment.author} on {new Date(comment.timestamp).toLocaleDateString()}</div>
+                            <div className="display-right">{comment.voteScore}</div>
                         </div>
-                        <div className="post-comment-vote">
-                            {comment.voteScore}
-                        </div>
-                        <div className="post-comment-body">
-                            {comment.body}
+                        <div class="card-body">
+                            <div className="webkit-box">
+                                {comment.body}
+                            </div>
                         </div>
                     </div>
                 )}

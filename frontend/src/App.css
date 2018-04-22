@@ -51,21 +51,24 @@ li a:hover {
   color: white;
 }
 
-.panel {
-    display: inline-block;
-    background: #ffffff;
-    min-height: 100px;
-    height: 100px;
-    box-shadow:0px 0px 5px 5px #C9C9C9;
-    -webkit-box-shadow:2px 2px 5px 5x #C9C9C9;
-    -moz-box-shadow:2px 2px 5px 5px #C9C9C9;
-    margin: 10px;
-    padding: 10px;
+.panel-width{
+  width: 48rem
 }
-.panel-default {
-    width: 75%;
-    margin-left: 10%;
-    height:100%;
+
+.display-inline{
+  display: inline-block;
+}
+
+.display-left{
+  float: left;
+}
+
+.display-right{
+  float: left;
+}
+
+.webkit-box{
+  display: -webkit-box;
 }
 
 .button .secondary{
@@ -150,7 +153,7 @@ input[type=submit]:hover {
     justify-content: flex-end;
     margin-right: 60px;
     position: fixed;
-    margin-left: 95%;
+    margin-left: 85%;
 }
 div.container{
   margin-left:20%;
