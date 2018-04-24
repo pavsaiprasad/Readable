@@ -67,6 +67,10 @@ li a:hover {
   float: left;
 }
 
+.display-grid{
+  display: inline-grid;
+}
+
 .webkit-box{
   display: -webkit-box;
 }

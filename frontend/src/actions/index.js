@@ -39,7 +39,9 @@ export const dispatchPosts = function () {
 
 export const addPost = function (post) {
   return function (dispatch) {
-    PostsAPI.createPost(post);
+    PostsAPI.createPost(post)
+      .then((res) => {
+      });
     return {
       type: 'ADD_POST',
       post

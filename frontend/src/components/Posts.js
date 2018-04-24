@@ -8,7 +8,7 @@ class Posts extends Component {
     render() {
         const { posts } = this.props;
         return (
-            <div>
+            <div className="display-grid">
                 {posts.map((post) =>
                     <Post key={post.id} post={post}></Post>
                 )}
