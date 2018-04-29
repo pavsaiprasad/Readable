@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 class Comments extends Component {
     render() {
-        const { comments, post } = this.props
+        const { comments } = this.props
         return (
             <div className="display-inline">
                 {comments.map((comment) =>

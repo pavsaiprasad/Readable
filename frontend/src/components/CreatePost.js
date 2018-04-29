@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import * as action from '../actions'
+import * as PostsAPI from '../services/posts-api';
+import { withRouter } from 'react-router-dom'
 
 class CreatePost extends Component {
-    state = {
-        author: null
-    };
-    onSubmit() {
+    onSubmit = () => {
         const uuid = require('uuid/v1');
         const post = {
             id: uuid(),
@@ -19,48 +18,49 @@ class CreatePost extends Component {
             deleted: false,
             commentCount: 0
         }
-        this.props.dispatch(action.addPost(post))
+        PostsAPI.createPost(post).then((item) => {
+            this.props.addPost(item);
+            this.props.history.goBack();
+        });
     }
     render() {
-
-        const { posts, categories } = this.props
-
+        const { categories } = this.props
         return (
-            <div class="container">
+            <div className="container">
                 <form onSubmit={this.onSubmit.bind(this)}>
                     <h2>Create a new Post</h2>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Author</label>
-                        <div class="col-sm-8">
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label">Author</label>
+                        <div className="col-sm-8">
                             <input type="text" id="author" name="author" onChange={(e) => this.setState({ author: e.target.value })} />
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Category</label>
-                        <div class="col-sm-8">
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label">Category</label>
+                        <div className="col-sm-8">
                             <select id="category" name="category" onChange={(e) => this.setState({ category: e.target.value })}>
                                 <option value="">Select a Category</option>
-                                {categories.map((category) => (
+                                {categories && categories.items && categories.items.map((category) => (
                                     <option key={category.path} value={category.path} >{category.name}</option>
                                 ))}
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Title</label>
-                        <div class="col-sm-8">
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label">Title</label>
+                        <div className="col-sm-8">
                             <input type="text" id="title" name="title" onChange={(e) => this.setState({ title: e.target.value })} />
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Body</label>
-                        <div class="col-sm-8">
+                    <div className="form-group row">
+                        <label className="col-sm-2 col-form-label">Body</label>
+                        <div className="col-sm-8">
                             <textarea id="body" name="body" placeholder="Write something.." onChange={(e) => this.setState({ body: e.target.value })}></textarea>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                    <div className="form-group row">
+                        <div className="offset-sm-2 col-sm-10">
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -71,9 +71,15 @@ class CreatePost extends Component {
 
 function mapStateToProps(state) {
     return {
-        posts: state.postsReducer,
-        categories: state.categoriesReducer
+        posts: state.posts,
+        categories: state.categories
     }
 }
 
-export default connect(mapStateToProps)(CreatePost)
+function mapDispatchToProps(dispatch) {
+    return {
+        addPost: (post) => dispatch(action.addPost(post))
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePost))

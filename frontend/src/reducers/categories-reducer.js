@@ -1,7 +1,10 @@
 export default function categories(state = [], action) {
   switch (action.type) {
     case 'CATEGORY_LIST':
-      return action.categories
+      return {
+        ...state,
+        items: action.categories
+      };
     default:
       return state
   }

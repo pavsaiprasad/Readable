@@ -11,7 +11,7 @@ class NavigationBar extends Component {
                 <li className="nav-item">
                     <a href="/">Home</a>
                 </li>
-                {categories.map((category) =>
+                {categories && categories.items && categories.items.map((category) =>
                     <li className="nav-item" key={category.name} >
                         <Link to={`/${category.path}`}>{category.name}</Link>
                     </li>
@@ -23,7 +23,7 @@ class NavigationBar extends Component {
 
 function mapStateToProps(state) {
     return {
-        categories: state.categoriesReducer
+        categories: state.categories
     }
 }
 

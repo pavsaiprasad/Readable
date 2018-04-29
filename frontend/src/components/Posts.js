@@ -1,17 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import Post from './Post'
 import '../App.css';
+import AddButton from '../components/AddButton';
 
 class Posts extends Component {
     render() {
         const { posts } = this.props;
         return (
-            <div className="display-grid">
-                {posts.map((post) =>
-                    <Post key={post.id} post={post}></Post>
-                )}
+            <div>
+                <div className="add-button">
+                    <AddButton />
+                </div>
+                <div className="display-inline">
+                    {posts && posts.items && posts.items.map((post) =>
+                        <Post key={post.id} post={post}></Post>
+                    )}
+                </div>
             </div>
         )
     }
@@ -19,7 +24,7 @@ class Posts extends Component {
 
 function mapStateToProps(state) {
     return {
-        posts: state.postsReducer
+        posts: state.posts
     }
 }
 

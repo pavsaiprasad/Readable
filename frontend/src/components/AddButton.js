@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 class AddButton extends Component {
     render() {
         return (
-            <Link className="btn btn-primary" to="/add">
-                <i className="fa fa-plus-circle"></i>
-            </Link>
+            <div className="add-button">
+                <Link className="btn btn-primary" to="/add">
+                    <i className="fa fa-plus-circle"></i>
+                </Link>
+            </div>
         );
     }
 }

@@ -1,35 +1,48 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
-import AddButton from './components/AddButton';
 import Posts from './components/Posts';
 import PostDetails from './components/PostDetails';
 import CreatePost from './components/CreatePost';
 import './App.css';
-import { Button } from 'react-bootstrap';
+import * as CategoriesAPI from './services/categories-api';
+import * as PostsAPI from './services/posts-api';
+import { connect } from 'react-redux'
+import * as action from './actions'
 
 class App extends Component {
+  componentDidMount() {
+    CategoriesAPI.getCategories().then((categories) => { this.props.getCategories(categories); });
+    PostsAPI.getPosts().then((posts) => { this.props.getPosts(posts); });
+  }
   render() {
     return (
-      <div className="App">
-        <NavigationBar />
-        <Route exact path="/" render={() => (
-          <div className="add-button">
-            <AddButton />
-          </div>
-        )} />
-        <Route exact path="/" render={() => (
-          <Posts />
-        )} />
-        <Route exact path="/add" render={() => (
-          <CreatePost />
-        )} />
-        <Route exact path="/:category/:id" render={({ match }) => (
-          <PostDetails match={match} />
-        )} />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <NavigationBar />
+          <Switch>
+            <Route exact path="/" component={Posts} />
+            <Route exact path="/add" render={() => (
+              <CreatePost />
+            )} />
+            <Route exact path="/:category/:id" render={({ match }) => (
+              <PostDetails match={match} />
+            )} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return {
+    getCategories: (categories) => dispatch(action.getCategories(categories)),
+    getPosts: (posts) => dispatch(action.getPosts(posts))
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App)

@@ -155,9 +155,8 @@ input[type=submit]:hover {
     z-index: 1000;
     position: relative;
     justify-content: flex-end;
-    margin-right: 60px;
-    position: fixed;
-    margin-left: 85%;
+    position: absolute;
+    margin-left: 90%;
 }
 div.container{
   margin-left:20%;
