@@ -8,3 +8,10 @@ const headers = {
 export const getComments = (id) =>
     fetch(`${api}/posts/${id}/comments`, { headers })
         .then(res => res.json())
+
+export const voteComment = (commentId, option) =>
+    fetch(`${api}/comments/${commentId}`, {
+        headers,
+        method: 'POST',
+        body: JSON.stringify({ option })
+    }).then(res => res.json())

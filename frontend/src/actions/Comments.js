@@ -5,3 +5,10 @@ export function getComments(parentId, comments) {
         comments
     }
 }
+
+export function getComment(comment) {
+    return {
+        type: 'GET_COMMENT',
+        comment
+    }
+}

@@ -5,6 +5,11 @@ export function comments(state = [], action) {
                 ...state,
                 items: action.comments.filter(comment => comment.deleted === false)
             }
+        case 'GET_COMMENT':
+            return {
+                ...state,
+                items: state.items.map(comment => comment.id === action.comment.id ? action.comment : comment)
+            }
         default:
             return state
     }
