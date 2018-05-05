@@ -1,18 +1,7 @@
-import * as CommentsAPI from '../services/comments-api';
-
-export const getComments = (parentId, comments) => ({
-    type: 'GET_COMMENTS',
-    parentId,
-    comments
-})
-
-export const dispatchComments = function (id) {
-    return function (dispatch) {
-        return CommentsAPI.getComments(id)
-            .then((res) => { return (res.json()) })
-            .then(function (comments) {
-                return dispatch(getComments(id, comments))
-            }
-            )
+export function getComments(parentId, comments) {
+    return {
+        type: 'GET_COMMENTS',
+        parentId,
+        comments
     }
 }

@@ -28,7 +28,7 @@ class CreatePost extends Component {
         return (
             <div className="container">
                 <form onSubmit={this.onSubmit.bind(this)}>
-                    <h2>Create a new Post</h2>
+                    <h3>Add a new Post</h3>
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label">Author</label>
                         <div className="col-sm-8">
@@ -58,9 +58,14 @@ class CreatePost extends Component {
                             <textarea id="body" name="body" placeholder="Write something.." onChange={(e) => this.setState({ body: e.target.value })}></textarea>
                         </div>
                     </div>
-                    <div className="form-group row">
-                        <div className="offset-sm-2 col-sm-10">
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                    <div className="row">
+                        <div className="offset-sm-4 col-sm-8">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary">Cancel</button>
+                            </div>
                         </div>
                     </div>
                 </form>

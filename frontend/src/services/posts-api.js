@@ -3,7 +3,7 @@ const api = 'http://localhost:3001'
 const headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'token'
+    'Authorization': 'auth-token'
 }
 
 export const getPosts = () =>
@@ -28,3 +28,10 @@ export const deletePost = (postId) => {
         }
     ).then(res => res.json())
 }
+
+export const votePost = (postId, option) =>
+    fetch(`${api}/posts/${postId}`, {
+        headers,
+        method: 'POST',
+        body: JSON.stringify({ option })
+    }).then(res => res.json())

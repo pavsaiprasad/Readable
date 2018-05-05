@@ -25,3 +25,10 @@ export const deletePost = function (id) {
     id
   }
 }
+
+export function getPost(post) {
+  return {
+    type: 'GET_POST',
+    post
+  }
+}

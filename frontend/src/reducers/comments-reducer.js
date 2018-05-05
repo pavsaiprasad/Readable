@@ -1,7 +1,10 @@
 export function comments(state = [], action) {
     switch (action.type) {
         case 'GET_COMMENTS':
-            return action.comments
+            return {
+                ...state,
+                items: action.comments.filter(comment => comment.deleted === false)
+            }
         default:
             return state
     }

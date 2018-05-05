@@ -10,24 +10,40 @@ class Post extends Component {
             this.props.deletePost(id);
         })
     }
+    upVote(id, option) {
+        PostsAPI.votePost(id, option).then(post => {
+            this.props.setPost(post);
+        });
+    }
+    downVote(id, option) {
+        PostsAPI.votePost(id, option).then(post => {
+            this.props.setPost(post);
+        });
+    }  
+   
     render() {
         const post = this.props.post;
+        const {voteScore} = this.props.post;
         return (
-            <div className="display-inline">
-                <div className="card panel-width">
-                    <div className="card-header">
-                        <div className="display-right">
-                            <button onClick={(e) => this.onDelete(post.id)}>
-                                <i className="fa fa-trash fa-2x" aria-hidden="true"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="card-body">
-                        <Link to={`/${post.category}/${post.id}`}><strong>{post.title}</strong></Link>
-                        <p className="card-text webkit-box">{post.body}</p>
-                        <div className="comment-count">
-                            <p>{post.commentCount} comments</p>
-                            <p>Vote score: {post.voteScore}</p>
+            <div className="container">
+                <div className="col-md-12 col-md-offset-8 ">
+                    <div className="card">
+                        <div className="card-body">
+                            <Link to={`/${post.category}/${post.id}`}><strong>{post.title}</strong></Link>
+                            <p className="card-text webkit-box">{post.body}</p>
+                            <div className="display-flex">
+                                <div>{post.commentCount} comments | Votes: {voteScore}
+                                    <button className="btn" onClick={(e)=>this.upVote(post.id, 'upVote')}>
+                                        <i className="fa fa-thumbs-up thumbs-up"></i>
+                                    </button>
+                                    <button className="btn" onClick={(e)=>this.downVote(post.id, 'downVote')}>
+                                        <i className="fa fa-thumbs-down thumbs-up"></i>
+                                    </button>
+                                    {(this.props.mode !== "view") && (
+                                        <span> | <a href="#" onClick={(e) => this.onDelete(post.id)}>Delete Post</a> </span>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,9 +53,10 @@ class Post extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-    return ({
-        deletePost: (post) => { dispatch(action.deletePost(post)) }
-    })
+    return { 
+        deletePost: (post) =>  dispatch(action.deletePost(post)),
+        setPost: (post) => dispatch(action.getPost(post))
+    }
 }
 
 export default connect(null, mapDispatchToProps)(Post);
