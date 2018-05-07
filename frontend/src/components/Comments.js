@@ -11,13 +11,11 @@ class Comments extends Component {
              this.props.comments.postId[postId] 
              && this.props.comments.postId[postId].items ? 
              this.props.comments.postId[postId].items : [];
-        console.log('=========>', this.props.comments.postId[postId]);
-        console.log('=========>', comments);
         return (
             <div className="container">
                 <div className="col-md-12 col-md-offset-8 ">
                     {comments && comments.map((comment) =>
-                        <Comment key={comment.id} comment={comment}/>
+                        <Comment key={comment.id} comment={comment} postId={postId}/>
                     )}
                 </div>
             </div>

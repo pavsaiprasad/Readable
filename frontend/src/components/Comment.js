@@ -4,6 +4,11 @@ import * as CommentsAPI from '../services/comments-api';
 import * as action from '../actions/comments'
 
 class Comment extends Component{
+    onDelete = (id, postId) => {
+        CommentsAPI.deleteComment(id).then(() => {
+            this.props.deleteComment(id, postId);
+        })
+    }
     upVote(id, option) {
         CommentsAPI.voteComment(id, option).then(comment => {
             this.props.setComment(comment);
@@ -15,8 +20,7 @@ class Comment extends Component{
         });
     }  
     render(){
-        const comment = this.props.comment;
-        console.log("------------>", comment);
+        const {comment, postId} = this.props
         return(
             <div className="card" key={comment.id}>
                 <div className="card-header">
@@ -29,6 +33,7 @@ class Comment extends Component{
                             <i className="fa fa-thumbs-down thumbs-up"></i>
                         </button>
                         {comment.voteScore}
+                        <span> | <a href="#" onClick={(e) => this.onDelete(comment.id, postId)}>Delete Comment</a></span>
                     </div>
                 </div>
                 <div class="card-body">
@@ -43,7 +48,8 @@ class Comment extends Component{
 
 function mapDispatchToProps(dispatch){
     return{
-        setComment: (comment)=>dispatch(action.getComment(comment))
+        setComment: (comment)=>dispatch(action.getComment(comment)),
+        deleteComment: (comment, postId) => dispatch(action.deleteComment(comment, postId))
     }
 }
 

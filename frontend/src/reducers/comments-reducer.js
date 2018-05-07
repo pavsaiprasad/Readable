@@ -30,6 +30,16 @@ export function comments(state = [], action) {
                     }
                 }
             }
+        case 'DELETE_COMMENT':
+            return {
+                ...state,
+                postId: {
+                    ...state.postId,
+                    [action.postId]: {
+                        items: state.postId[action.postId].items.filter(comment => comment.id !== action.id)
+                    }
+                }
+            }
         default:
             return state
     }

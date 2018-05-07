@@ -19,3 +19,11 @@ export const addComment = function (comment) {
         comment
     }
 }
+
+export const deleteComment = function (id, postId) {
+    return {
+        type: 'DELETE_COMMENT',
+        id,
+        postId
+    }
+}
