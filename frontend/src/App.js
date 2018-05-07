@@ -4,6 +4,7 @@ import NavigationBar from './components/NavigationBar';
 import Posts from './components/Posts';
 import PostDetails from './components/PostDetails';
 import CreatePost from './components/CreatePost';
+import CreateComment from './components/CreateComment';
 import './App.css';
 import * as CategoriesAPI from './services/categories-api';
 import * as PostsAPI from './services/posts-api';
@@ -24,6 +25,9 @@ class App extends Component {
             <Route exact path="/" component={Posts} />
             <Route exact path="/add" render={() => (
               <CreatePost />
+            )} />
+            <Route exact path="/:id/comment" render={() => (
+              <CreateComment />
             )} />
             <Route exact path="/:category/:id" render={({ match }) => (
               <PostDetails match={match} />

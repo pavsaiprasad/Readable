@@ -18,7 +18,7 @@ class PostDetails extends Component {
             return (
                 <div>
                     <Post post={post} mode="view" />
-                    <Comments comments={comments} />
+                    <Comments comments={comments} postId={post.id}/>
                 </div>
             )
         }

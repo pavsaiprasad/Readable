@@ -15,7 +15,8 @@ class Comment extends Component{
         });
     }  
     render(){
-        const {comment} = this.props;
+        const comment = this.props.comment;
+        console.log("------------>", comment);
         return(
             <div className="card" key={comment.id}>
                 <div className="card-header">

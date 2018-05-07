@@ -1,7 +1,7 @@
-export function getComments(parentId, comments) {
+export function getComments(postId, comments) {
     return {
         type: 'GET_COMMENTS',
-        parentId,
+        postId,
         comments
     }
 }
@@ -9,6 +9,13 @@ export function getComments(parentId, comments) {
 export function getComment(comment) {
     return {
         type: 'GET_COMMENT',
+        comment
+    }
+}
+
+export const addComment = function (comment) {
+    return {
+        type: 'ADD_COMMENT',
         comment
     }
 }

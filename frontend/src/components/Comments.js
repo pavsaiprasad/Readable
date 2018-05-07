@@ -5,11 +5,18 @@ import Comment from './Comment'
 
 class Comments extends Component {
     render() {
-        const { comments } = this.props
+        const postId = this.props.postId;
+        const comments = this.props.comments &&
+             this.props.comments.postId && 
+             this.props.comments.postId[postId] 
+             && this.props.comments.postId[postId].items ? 
+             this.props.comments.postId[postId].items : [];
+        console.log('=========>', this.props.comments.postId[postId]);
+        console.log('=========>', comments);
         return (
             <div className="container">
                 <div className="col-md-12 col-md-offset-8 ">
-                    {comments.items && comments.items.map((comment) =>
+                    {comments && comments.map((comment) =>
                         <Comment key={comment.id} comment={comment}/>
                     )}
                 </div>

@@ -42,6 +42,9 @@ class Post extends Component {
                                     {(this.props.mode !== "view") && (
                                         <span> | <a href="#" onClick={(e) => this.onDelete(post.id)}>Delete Post</a> </span>
                                     )}
+                                    {(this.props.mode === "view") && (
+                                        <span> |  <Link to={`/${post.id}/comment`}>Add a comment</Link></span>
+                                    )}
                                 </div>
                             </div>
                         </div>
