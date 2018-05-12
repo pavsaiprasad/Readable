@@ -23,6 +23,13 @@ export const addComment = (comment) =>
         body: JSON.stringify(comment)
     }).then(res => res.json())
 
+export const editComment = (comment) =>
+    fetch(`${api}/comments/${comment.id}`, {
+        headers,
+        method: 'PUT',
+        body: JSON.stringify(comment)
+    }).then(res => res.json())
+
 export const deleteComment = (commentId) => {
     return fetch(`${api}/comments/${commentId}`,
         {

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import * as CommentsAPI from '../services/comments-api';
 import * as action from '../actions/comments'
 
@@ -34,9 +35,10 @@ class Comment extends Component{
                         </button>
                         {comment.voteScore}
                         <span> | <a href="#" onClick={(e) => this.onDelete(comment.id, postId)}>Delete Comment</a></span>
+                        <span> |  <Link to={`/post/${postId}/comment/${comment.id}`}>Edit</Link></span>
                     </div>
                 </div>
-                <div class="card-body">
+                <div className="card-body">
                     <div className="webkit-box">
                         {comment.body}
                     </div>

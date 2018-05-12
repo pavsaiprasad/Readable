@@ -9,7 +9,7 @@ class NavigationBar extends Component {
     render() {
         const { categories } = this.props;
         return (
-            <div class="container">
+            <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
