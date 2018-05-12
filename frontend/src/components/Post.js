@@ -40,7 +40,7 @@ class Post extends Component {
                                     </button>
                                     <button className="btn" onClick={(e)=>this.downVote(post.id, 'downVote')}>
                                         <i className="fa fa-thumbs-down font-format"></i>
-                                    </button>
+                                    </button> |
                                     <button className="btn" onClick={(e) => this.onDelete(post.id)}>
                                         <i className="fa fa-trash font-format"></i>
                                     </button>
