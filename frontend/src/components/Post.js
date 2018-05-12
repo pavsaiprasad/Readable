@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import * as action from '../actions';
 import { connect } from 'react-redux';
 import * as PostsAPI from '../services/posts-api';
+import { withRouter } from 'react-router-dom';
 
 class Post extends Component {
     onDelete = (id) => {
-        PostsAPI.deletePost(id).then(() => {
+        PostsAPI.deletePost(id).then((response) => {
+            this.props.history.push('/'); 
             this.props.deletePost(id);
         })
     }
@@ -34,14 +36,14 @@ class Post extends Component {
                             <div className="display-flex">
                                 <div>{post.commentCount} comments | Votes: {voteScore}
                                     <button className="btn" onClick={(e)=>this.upVote(post.id, 'upVote')}>
-                                        <i className="fa fa-thumbs-up thumbs-up"></i>
+                                        <i className="fa fa-thumbs-up font-format"></i>
                                     </button>
                                     <button className="btn" onClick={(e)=>this.downVote(post.id, 'downVote')}>
-                                        <i className="fa fa-thumbs-down thumbs-up"></i>
+                                        <i className="fa fa-thumbs-down font-format"></i>
                                     </button>
-                                    {(this.props.mode !== "view") && (
-                                        <span> | <a href="#" onClick={(e) => this.onDelete(post.id)}>Delete Post</a> </span>
-                                    )}
+                                    <button className="btn" onClick={(e) => this.onDelete(post.id)}>
+                                        <i className="fa fa-trash font-format"></i>
+                                    </button>
                                     {(this.props.mode === "view") && (
                                         <span> |  <Link to={`/${post.id}/comment`}>Add a comment</Link></span>
                                     )}
@@ -62,4 +64,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Post);
+export default withRouter(connect(null, mapDispatchToProps)(Post));
