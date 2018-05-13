@@ -7,6 +7,7 @@ import CreatePost from './components/CreatePost';
 import CreateComment from './components/CreateComment';
 import EditComment from './components/EditComment';
 import EditPost from './components/EditPost';
+import PostsByCategory from './components/PostsByCategory';
 import './App.css';
 import * as CategoriesAPI from './services/categories-api';
 import * as PostsAPI from './services/posts-api';
@@ -24,6 +25,8 @@ class App extends Component {
         <div className="App">
           <NavigationBar />
           <Switch>
+            <Route exact path={'/:category'} component={PostsByCategory} />
+            
             <Route exact path="/" component={Posts} />
             <Route exact path="/add" render={() => (
               <CreatePost />
@@ -47,6 +50,12 @@ class App extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    categories: state.categories
+  }
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     getCategories: (categories) => dispatch(action.getCategories(categories)),
@@ -55,6 +64,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App)

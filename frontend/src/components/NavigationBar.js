@@ -18,7 +18,7 @@ class NavigationBar extends Component {
                             </li>
                             {categories && categories.items && categories.items.map((category) =>
                                 <li className="nav-item" key={category.name}>
-                                    <Link className="nav-link" to={`/${category.path}`}>{category.name}</Link>
+                                    <Link className="nav-link" to={`/${category.name}`}>{category.name}</Link>
                                 </li>
                             )}
                         </ul>
