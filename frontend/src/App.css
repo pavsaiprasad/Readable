@@ -140,7 +140,7 @@ input[type=submit]:hover {
     position: relative;
     justify-content: flex-end;
     position: absolute;
-    margin-left: 90%;
+    margin-left: 80%;
 }
 div.container{
   margin-left:20%;
@@ -162,6 +162,11 @@ div.container{
 
 .padded-h2{
   padding: 1rem
+}
+
+.link-text{
+  font-size: 1rem;
+  padding: 0.5rem;
 }
 
 
