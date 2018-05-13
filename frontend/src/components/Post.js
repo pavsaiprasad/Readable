@@ -32,7 +32,8 @@ class Post extends Component {
                     <div className="card">
                         <div className="card-body">
                             <Link to={`/${post.category}/${post.id}`}><strong>{post.title}</strong></Link>
-                            <p className="card-text webkit-box">{post.body}</p>
+                            <div className="padded">Author: {post.author} | Category: {post.category}</div>
+                            <div className="card-text webkit-box">{post.body}</div>
                             <div className="display-flex">
                                 <div>{post.commentCount} comments | Votes: {voteScore}
                                     <button className="btn" onClick={(e)=>this.upVote(post.id, 'upVote')}>
@@ -44,6 +45,9 @@ class Post extends Component {
                                     <button className="btn" onClick={(e) => this.onDelete(post.id)}>
                                         <i className="fa fa-trash font-format"></i>
                                     </button>
+                                    <Link to={`/post/${post.id}`}>
+                                        <i className="fa fa-pencil font-format"></i>
+                                    </Link>
                                     {(this.props.mode === "view") && (
                                         <span> |  <Link to={`/${post.id}/comment`}>Add a comment</Link></span>
                                     )}

@@ -20,6 +20,13 @@ export const createPost = (data) => {
     ).then(res => res.json())
 }
 
+export const editPost = (post) =>
+    fetch(`${api}/posts/${post.id}`, {
+        headers,
+        method: 'PUT',
+        body: JSON.stringify(post)
+    }).then(res => res.json())
+
 export const deletePost = (postId) => {
     return fetch(`${api}/posts/${postId}`,
         {

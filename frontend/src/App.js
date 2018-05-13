@@ -6,6 +6,7 @@ import PostDetails from './components/PostDetails';
 import CreatePost from './components/CreatePost';
 import CreateComment from './components/CreateComment';
 import EditComment from './components/EditComment';
+import EditPost from './components/EditPost';
 import './App.css';
 import * as CategoriesAPI from './services/categories-api';
 import * as PostsAPI from './services/posts-api';
@@ -29,6 +30,9 @@ class App extends Component {
             )} />
             <Route exact path="/:id/comment" render={() => (
               <CreateComment />
+            )} />
+            <Route exact path="/post/:id" render={() => (
+              <EditPost/>
             )} />
             <Route exact path="/post/:postId/comment/:id" render={() => (
               <EditComment />

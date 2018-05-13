@@ -156,8 +156,12 @@ div.container{
   color: #007bff;
 }
 
+.padded{
+  padding-bottom: 1.25rem;
+}
+
 .padded-h2{
-  padding: 1rem;
+  padding: 1rem
 }
 
 

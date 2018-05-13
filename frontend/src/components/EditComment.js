@@ -19,7 +19,6 @@ class EditComment extends Component {
         });
     }
     render() {
-        console.log('-------->', this.props.history);
         const postId = this.props.match.params.postId;
         const commentId = this.props.match.params.id;
         const comments = this.props.comments &&
