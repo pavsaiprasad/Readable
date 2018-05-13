@@ -15,6 +15,10 @@ class PostDetails extends Component {
         const { posts, comments } = this.props;
         if (posts && posts.items && posts.items.length !== 0) {
             const post = posts.items.filter((p) => p.id === this.props.match.params.id)[0];
+            const commentCount = comments && comments.postId && comments.postId[post.id] && comments.postId[post.id].items ?
+                comments.postId[post.id].items.length
+                : 0;
+            post.commentCount = commentCount;
             return (
                 <div>
                     <Post post={post} mode="view" />

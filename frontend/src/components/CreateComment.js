@@ -5,7 +5,8 @@ import * as CommentsAPI from '../services/comments-api'
 import { withRouter } from 'react-router-dom'
 
 class CreateComment extends Component {
-    onSubmit = () => {
+    createComment = (e) => {
+        e.preventDefault();
         const uuid = require('uuid/v1');
         const comment = {
             id: uuid(),
@@ -25,7 +26,7 @@ class CreateComment extends Component {
             const post = posts.items.filter((p) => p.id === this.props.match.params.id)[0];
             return (
                 <div className="container">
-                    <form onSubmit={this.onSubmit.bind(this)}>
+                    <form onSubmit={this.createComment}>
                         <h3 className="padded-h2">Add a new comment</h3>
                         <div className="form-group row">
                             <label className="col-sm-2 col-form-label">Post</label>

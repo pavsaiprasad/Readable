@@ -1,5 +1,4 @@
 export default function posts(state = {}, action) {
-    console.log('=======>', action.post);
     switch (action.type) {
         case 'POSTS_LIST':
             return {

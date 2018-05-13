@@ -26,6 +26,7 @@ class Post extends Component {
     render() {
         const post = this.props.post;
         const {voteScore} = this.props.post;
+        const comments = this.props.comments;
         return (
             <div className="container">
                 <div className="col-md-12 col-md-offset-8 ">
@@ -61,6 +62,12 @@ class Post extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        comments: state.comments
+    }
+}
+
 function mapDispatchToProps(dispatch) {
     return { 
         deletePost: (post) =>  dispatch(action.deletePost(post)),
@@ -68,4 +75,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(Post));
+export default connect(mapStateToProps, mapDispatchToProps)(Post)
