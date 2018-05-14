@@ -8,6 +8,7 @@ import CreateComment from './components/CreateComment';
 import EditComment from './components/EditComment';
 import EditPost from './components/EditPost';
 import PostsByCategory from './components/PostsByCategory';
+import SortByFilter from './components/SortByFilter';
 import './App.css';
 import * as CategoriesAPI from './services/categories-api';
 import * as PostsAPI from './services/posts-api';
@@ -24,6 +25,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <NavigationBar />
+          <SortByFilter/>
           <Switch>
             <Route exact path={'/:category'} component={PostsByCategory} />
             

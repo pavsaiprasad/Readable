@@ -7,10 +7,12 @@ class Posts extends Component {
     render() {
         const { posts } = this.props;
         return (
-            <div>
-                {posts && posts.items && posts.items.map((post) =>
-                    <Post key={post.id} post={post}></Post>
-                )}
+            <div className="container">
+                <div>
+                    {posts && posts.items && posts.items.map((post) =>
+                        <Post key={post.id} post={post}></Post>
+                    )}
+                </div>
             </div>
         )
     }

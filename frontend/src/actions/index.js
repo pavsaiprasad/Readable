@@ -32,3 +32,10 @@ export function getPost(post) {
     post
   }
 }
+
+export function changeFilter(selectedOption) {
+  return {
+    type: 'SORT_BY',
+    selectedOption
+  }
+}
