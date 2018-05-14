@@ -1,21 +1,25 @@
 const initialSortByList = {
     items: [
         {
-            'id': 'score-asc',
-            'value': 'Votes Low-High'
-        },
-        {
             'id': 'score-desc',
-            'value': 'Votes High-Low'
+            'value': 'Votes High-Low',
+            'sortByFields': ['-voteScore', '-timestamp']
         },
         {
-            'id': 'date-asc',
-            'value': 'Date Old-New'
+            'id': 'score-asc',
+            'value': 'Votes Low-High',
+            'sortByFields': ['voteScore', '-timestamp']
         },
         {
             'id': 'date-desc',
-            'value': 'Date New-Old'
+            'value': 'Date New-Old',
+            'sortByFields': ['-timestamp', '-voteScore']
         },
+        {
+            'id': 'date-asc',
+            'value': 'Date Old-New',
+            'sortByFields': ['timestamp', '-voteScore']
+        }
     ],
     selectedOption: 'score-desc'
 };

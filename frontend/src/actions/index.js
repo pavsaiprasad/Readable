@@ -33,7 +33,7 @@ export function getPost(post) {
   }
 }
 
-export function changeFilter(selectedOption) {
+export function changeSortBy(selectedOption) {
   return {
     type: 'SORT_BY',
     selectedOption
