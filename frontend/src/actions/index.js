@@ -1,10 +1,3 @@
-export function getCategories(categories) {
-  return {
-    type: 'CATEGORY_LIST',
-    categories
-  }
-}
-
 export function getPosts(posts) {
   return {
     type: 'POSTS_LIST',

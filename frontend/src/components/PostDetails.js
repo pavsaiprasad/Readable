@@ -7,24 +7,33 @@ import * as CommentsAPI from '../services/comments-api';
 
 class PostDetails extends Component {
     componentDidMount() {
-        CommentsAPI.getComments(this.props.match.params.id).then((comments) => {
-            this.props.getComments(this.props.match.params.id, comments)
-        })
+        if (this.props.match.params.id) {
+            CommentsAPI.getComments(this.props.match.params.id).then((comments) => {
+                this.props.getComments(this.props.match.params.id, comments)
+            })
+        }
     }
     render() {
         const { posts, comments } = this.props;
-        if (posts && posts.items && posts.items.length !== 0) {
+        if (this.props.match.params.id && posts && posts.items && posts.items.length !== 0) {
             const post = posts.items.filter((p) => p.id === this.props.match.params.id)[0];
-            const commentCount = comments && comments.postId && comments.postId[post.id] && comments.postId[post.id].items ?
-                comments.postId[post.id].items.length
-                : 0;
-            post.commentCount = commentCount;
-            return (
-                <div>
-                    <Post post={post} mode="view" />
-                    <Comments comments={comments} postId={post.id}/>
-                </div>
-            )
+            console.log('post----->', post);
+            if (post) {
+                const commentCount = comments && comments.postId && comments.postId[post.id] && comments.postId[post.id].items ?
+                    comments.postId[post.id].items.length
+                    : 0;
+                post.commentCount = commentCount;
+                return (
+                    <div>
+                        <Post post={post} mode="view" />
+                        <Comments comments={comments} postId={post.id} />
+                    </div>
+                )
+            } else {
+                return (
+                    <div></div>
+                )
+            }
         }
         else {
             return (

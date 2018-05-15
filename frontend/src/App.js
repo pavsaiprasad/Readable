@@ -14,6 +14,7 @@ import * as CategoriesAPI from './services/categories-api';
 import * as PostsAPI from './services/posts-api';
 import { connect } from 'react-redux'
 import * as action from './actions'
+import * as categoriesAction from './actions/categories'
 
 class App extends Component {
   componentDidMount() {
@@ -60,7 +61,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCategories: (categories) => dispatch(action.getCategories(categories)),
+    getCategories: (categories) => dispatch(categoriesAction.getCategories(categories)),
     getPosts: (posts) => dispatch(action.getPosts(posts))
   }
 }
