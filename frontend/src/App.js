@@ -9,6 +9,7 @@ import EditComment from './components/EditComment';
 import EditPost from './components/EditPost';
 import PostsByCategory from './components/PostsByCategory';
 import SortByFilter from './components/SortByFilter';
+import Error404 from './components/Error404';
 import './App.css';
 import * as CategoriesAPI from './services/categories-api';
 import * as PostsAPI from './services/posts-api';
@@ -26,7 +27,11 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <NavigationBar />
-          <SortByFilter/>
+          {
+            !this.props.displayErrorPage && (
+              <SortByFilter/>
+              )
+          }
           <Switch>
             <Route exact path={'/:category'} component={PostsByCategory} />
             
@@ -46,6 +51,7 @@ class App extends Component {
             <Route exact path="/:category/:id" render={({ match }) => (
               <PostDetails match={match} />
             )} />
+            <Route component={Error404} />
           </Switch>
         </div>
       </BrowserRouter>
@@ -55,7 +61,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    categories: state.categories
+    categories: state.categories,
+    displayErrorPage: state.displayErrorPage
   }
 }
 

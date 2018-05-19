@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Post from './Post';
 import Comments from './Comments';
+import Error404 from './Error404';
 import * as action from '../actions/comments';
 import * as CommentsAPI from '../services/comments-api';
 
@@ -17,7 +18,6 @@ class PostDetails extends Component {
         const { posts, comments } = this.props;
         if (this.props.match.params.id && posts && posts.items && posts.items.length !== 0) {
             const post = posts.items.filter((p) => p.id === this.props.match.params.id)[0];
-            console.log('post----->', post);
             if (post) {
                 const commentCount = comments && comments.postId && comments.postId[post.id] && comments.postId[post.id].items ?
                     comments.postId[post.id].items.length
@@ -31,7 +31,9 @@ class PostDetails extends Component {
                 )
             } else {
                 return (
-                    <div></div>
+                    <div>
+                        <Error404/>
+                    </div>
                 )
             }
         }

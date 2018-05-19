@@ -32,3 +32,10 @@ export function changeSortBy(selectedOption) {
     selectedOption
   }
 }
+
+export function displayError(displayErrorPage) {
+  return {
+    type: 'DISPLAY_ERROR',
+    displayErrorPage
+  }
+}
