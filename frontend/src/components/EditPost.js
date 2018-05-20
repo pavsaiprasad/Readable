@@ -9,7 +9,8 @@ class EditPost extends Component {
     author: '',
     body: '',
     category: '',
-    title: ''
+    title: '',
+    error: ''
     };
     componentDidMount() {
         const posts = this.props.posts;
@@ -25,6 +26,12 @@ class EditPost extends Component {
     }
     updatePost = (e) => {
         e.preventDefault();
+        if (!this.state.title || !this.state.body || !this.state.category) {
+            this.setState({
+                error: 'Please enter all the required fields'
+            })
+            return false;
+        }
         const post = {
             id: this.props.match.params.id,
             title: this.state.title,
@@ -45,6 +52,11 @@ class EditPost extends Component {
             <div className="container">
                 <form onSubmit={this.updatePost}>
                     <h3>Edit Post</h3>
+                    {(this.state.error) &&
+                        (<div class="alert alert-danger" role="alert">
+                            <p>{this.state.error}</p>
+                        </div>
+                        )}
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label">Author</label>
                         <div className="col-sm-8">

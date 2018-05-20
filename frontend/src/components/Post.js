@@ -26,7 +26,6 @@ class Post extends Component {
     render() {
         const post = this.props.post;
         const {voteScore} = this.props.post;
-        const comments = this.props.comments;
         return (
             <div className="container">
                 <div className="col-md-12 col-md-offset-8 ">

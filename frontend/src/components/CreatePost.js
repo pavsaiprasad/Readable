@@ -5,7 +5,18 @@ import * as PostsAPI from '../services/posts-api';
 import { withRouter } from 'react-router-dom'
 
 class CreatePost extends Component {
-    onSubmit = () => {
+    state = {
+        error: ''
+    }
+    onSubmit = (e) => {
+        e.preventDefault();
+        if (!this.state.title || !this.state.body || !this.state.author || !this.state.category){
+            this.setState ({
+                error: 'Please enter all the required fields'
+            })
+            return false;
+        }
+
         const uuid = require('uuid/v1');
         const post = {
             id: uuid(),
@@ -20,7 +31,7 @@ class CreatePost extends Component {
         }
         PostsAPI.createPost(post).then((item) => {
             this.props.addPost(item);
-            this.props.history.goBack();
+            this.props.history.push('/');
         });
     }
     render() {
@@ -29,6 +40,11 @@ class CreatePost extends Component {
             <div className="container">
                 <form onSubmit={this.onSubmit.bind(this)}>
                     <h3>Add a new Post</h3>
+                    {(this.state.error) && 
+                        (<div class="alert alert-danger" role="alert">
+                       <p>{this.state.error}</p> 
+                    </div>
+                    )}
                     <div className="form-group row">
                         <label className="col-sm-2 col-form-label">Author</label>
                         <div className="col-sm-8">

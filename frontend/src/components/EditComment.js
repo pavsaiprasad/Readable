@@ -5,8 +5,17 @@ import * as CommentsAPI from '../services/comments-api'
 import { withRouter } from 'react-router-dom'
 
 class EditComment extends Component {
+    state = {
+        error: ''
+    }
     updateComment = (e) => {
         e.preventDefault();
+        if (!this.state.body || !this.state.author) {
+            this.setState({
+                error: 'Please enter all the required fields'
+            })
+            return false;
+        }
         const comment = {
             id: this.props.match.params.id,
             timestamp: Date.now(),
@@ -32,6 +41,11 @@ class EditComment extends Component {
                 <div className="container">
                     <form onSubmit={this.updateComment}>
                         <h3 className="padded-h2">Edit Comment</h3>
+                        {(this.state.error) &&
+                            (<div class="alert alert-danger" role="alert">
+                                <p>{this.state.error}</p>
+                            </div>
+                            )}
                         <div className="form-group row">
                             <label className="col-sm-2 col-form-label">Comment</label>
                             <div className="col-sm-8">
