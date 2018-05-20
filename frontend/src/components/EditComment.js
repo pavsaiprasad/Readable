@@ -10,18 +10,11 @@ class EditComment extends Component {
     }
     updateComment = (e) => {
         e.preventDefault();
-        if (!this.state.body) {
-            this.setState({
-                error: 'Please enter all the required fields'
-            })
-            return false;
-        }
         const comment = {
             id: this.props.match.params.id,
             timestamp: Date.now(),
             body: this.state.body
         }
-        
         CommentsAPI.editComment(comment).then((item) => {
             this.props.setComment(item);
             this.props.history.goBack();
@@ -54,11 +47,11 @@ class EditComment extends Component {
                         </div>
                         <div className="row">
                             <div className="offset-sm-4 col-sm-8">
-                                <div class="btn-group">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                <div className="btn-group">
+                                    <button type="submit" className="btn btn-primary">Submit</button>
                                 </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-secondary">Cancel</button>
+                                <div className="btn-group">
+                                    <button type="button" className="btn btn-secondary" onClick={(e) => { this.props.history.goBack(); }}>Cancel</button>
                                 </div>
                             </div>
                         </div>

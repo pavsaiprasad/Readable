@@ -35,7 +35,7 @@ class CreatePost extends Component {
         });
     }
     render() {
-        const { categories } = this.props
+        const { categories, history } = this.props
         return (
             <div className="container">
                 <form onSubmit={this.onSubmit.bind(this)}>
@@ -80,7 +80,7 @@ class CreatePost extends Component {
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="button" class="btn btn-secondary" onClick={(e) => { history.goBack(); }}>Cancel</button>
                             </div>
                         </div>
                     </div>

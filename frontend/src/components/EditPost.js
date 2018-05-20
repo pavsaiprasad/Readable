@@ -45,7 +45,7 @@ class EditPost extends Component {
         });
     }
     render() {
-        const { categories, posts } = this.props
+        const { categories, posts, history } = this.props
         if (posts && posts.items && posts.items.length !== 0) {
         const post = posts.items.filter((p) => p.id === this.props.match.params.id)[0];
         return (
@@ -92,7 +92,7 @@ class EditPost extends Component {
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-secondary">Cancel</button>
+                                <button type="button" class="btn btn-secondary" onClick={(e) => { history.goBack(); }}>Cancel</button>
                             </div>
                         </div>
                     </div>
