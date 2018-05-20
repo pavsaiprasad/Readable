@@ -10,7 +10,7 @@ class EditComment extends Component {
     }
     updateComment = (e) => {
         e.preventDefault();
-        if (!this.state.body || !this.state.author) {
+        if (!this.state.body) {
             this.setState({
                 error: 'Please enter all the required fields'
             })
