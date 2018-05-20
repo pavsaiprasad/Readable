@@ -9,21 +9,24 @@ You need to install node.js v8.9.4
 Optionally install yarn as well
 
 ## Install dependencies:
+```
 $ npm install
 $ yarn install
+```
 
 ## Run the app:
 You will need to run both the backend server to be able to use documented API endpoints. The server's endpoints help manage storing, reading, updating, and deleting data for Readable.
-
+```
 $ cd <Project directory>/api-server
 $ npm start
 $ yarn start
-
+```
 ## To run Frontend:
+```
 $ cd <Project directory>/frontend
 $ npm start
 $ yarn start
-
+```
 
 ## Below are the packages used in the project:
 
