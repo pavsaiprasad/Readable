@@ -1,5 +1,5 @@
 # Readable
-A content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+A content and comment web app written using React and Redux. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
 
 The App was written using React with Redux for the frontend and with a Backend Api for fetching data.
 
